@@ -6,9 +6,9 @@ namespace Game.Scripts.Managers
 {
     public class InteractableController : MonoBehaviour
     {
-        [SerializeField] private int playerSwapScore;
+        [SerializeField] private float playerSwapScore;
 
-        public static event Action<int> ScoreChanged;
+        public static event Action<float> ScoreChanged;
 
         private void Awake()
         {
