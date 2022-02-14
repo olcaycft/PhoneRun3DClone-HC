@@ -1,4 +1,5 @@
 using System.Collections;
+using Game.Scripts.Interactables;
 using Game.Scripts.Managers;
 using TMPro;
 using UnityEngine;
@@ -11,46 +12,57 @@ namespace Game.Scripts.UI.PlayerUI
         [SerializeField] private TextMeshProUGUI currentPlayerName;
         [SerializeField] private Image foregroundImage;
         [SerializeField] private float updateSpeedSeconds = 0.2f;
+        [SerializeField] private string add;
+
+        private int maxNumberForPlayerSwap = 100;
         
         
-        private int maxNumberForPlayerSwap=100;
+
         private void Awake()
         {
-            InteractableController.ScoreChanged += ChangeBarPercentage;
+            PlayerStateManager.scoreChanged += ChangeBarPercentage;
+            PlayerStateManager.playerChanged += ChangePlayerName;
         }
 
         private void OnDestroy()
         {
-            InteractableController.ScoreChanged -= ChangeBarPercentage;
+            PlayerStateManager.scoreChanged -= ChangeBarPercentage;
+            PlayerStateManager.playerChanged -= ChangePlayerName;
         }
-        
+
         // karakter değişti eventi bekliyor.
-        private void ChangePlayerName(string name)
+        private void ChangePlayerName(PlayerStates state)
         {
-            currentPlayerName.text = name;
+            Debug.Log(state);
             ChangeBarPercentage(0);
+            //add = state.Equals(PlayerStates.Old.ToString()) || state.Equals(PlayerStates.Average.ToString()) ? "" : "!";
+            add = state == PlayerStates.Old || state == PlayerStates.Average ? "!" : "";
+            currentPlayerName.text = state + add;
+            
         }
+
         private void ChangeBarPercentage(float scoreForSwap)
         {
             float currentPct = scoreForSwap / maxNumberForPlayerSwap;
             StartCoroutine(ChangeToPct(currentPct));
         }
-    
+
         private IEnumerator ChangeToPct(float pct)
         {
             float preChangePct = foregroundImage.fillAmount;
-            float elapsed = 0f;
-            while (elapsed < updateSpeedSeconds)
+            float elapse = 0f;
+            while (elapse < updateSpeedSeconds)
             {
-                elapsed += Time.deltaTime;
-                foregroundImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapsed / updateSpeedSeconds);
+                elapse += Time.deltaTime;
+                foregroundImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapse / updateSpeedSeconds);
                 yield return null;
             }
-            if (pct<0)
+
+            if (pct < 0)
                 pct = 0;
-            else if (pct>100)
+            else if (pct > 100)
                 pct = 100;
-            
+
             foregroundImage.fillAmount = pct;
         }
     }

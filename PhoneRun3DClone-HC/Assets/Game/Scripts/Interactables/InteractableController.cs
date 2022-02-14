@@ -1,46 +1,57 @@
 using System;
-using Game.Scripts.Interactables;
+using Game.Scripts.Managers;
 using UnityEngine;
 
-namespace Game.Scripts.Managers
+namespace Game.Scripts.Interactables
 {
     public class InteractableController : MonoBehaviour
     {
-        [SerializeField] private float playerSwapScore;
+        private float playerSwapScore;
 
-        public static event Action<float> ScoreChanged;
+        public static event Action<float> interactableValue;
 
         private void Awake()
         {
             Interactable.colisionWithInteractable += ChangePlayerChangeScore;
+            //PlayerStateManager.playerChanged += ClearScore;
         }
 
         private void OnDestroy()
         {
             Interactable.colisionWithInteractable += ChangePlayerChangeScore;
+            //PlayerStateManager.playerChanged += ClearScore;
         }
 
         private void ChangePlayerChangeScore(InteractableType state)
         {
+            var scoreChangeValue = 0;
             switch (state)
             {
                 case InteractableType.Collectable3:
-                    playerSwapScore += 3;
+                    scoreChangeValue = 80;
                     break;
                 case InteractableType.Collectable10:
-                    playerSwapScore += 10;
+                    scoreChangeValue = 10;
                     break;
                 case InteractableType.Collectable15:
-                    playerSwapScore += 15;
+                    scoreChangeValue = 15;
                     break;
                 case InteractableType.Obstacle20:
-                    playerSwapScore -= 20;
+                    scoreChangeValue = -20;
                     break;
                 case InteractableType.ObstacleHacker:
-                    playerSwapScore -= 50;
+                    scoreChangeValue = -50;
                     break;
+                    
             }
-            ScoreChanged?.Invoke(playerSwapScore);
+            interactableValue?.Invoke(scoreChangeValue);
+            
         }
+
+        /*private void ClearScore(string state)
+        {
+            playerSwapScore = 0;
+            scoreChanged?.Invoke(playerSwapScore);
+        }*/
     }
 }
