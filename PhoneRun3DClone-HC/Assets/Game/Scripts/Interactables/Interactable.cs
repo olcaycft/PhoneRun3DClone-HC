@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Scripts.Collectable
+namespace Game.Scripts.Interactables
 {
     public class Interactable : MonoBehaviour
     {
@@ -14,6 +14,7 @@ namespace Game.Scripts.Collectable
             if (other.gameObject.CompareTag("Player"))
             {
                 colisionWithInteractable?.Invoke(interactable);
+                gameObject.SetActive(false);
             }
         }
     }

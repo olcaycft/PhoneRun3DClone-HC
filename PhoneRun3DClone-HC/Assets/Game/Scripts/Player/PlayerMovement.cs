@@ -17,8 +17,8 @@ public class PlayerMovement : MonoBehaviour
     //private float sideMovementLerpSpeed => SettingsManager.GameSettings.playerSideMovementLerpSpeed;
     //private float forwardSpeed => SettingsManager.GameSettings.playerForwardSpeed;
     
-    private float sideMovementSensitivity = 20f;
-    private float sideMovementLerpSpeed = 5f;
+    private float sideMovementSensitivity = 1f;
+    private float sideMovementLerpSpeed = 3f;
     private float forwardSpeed = 5f;
 
     private float sideMovementTarget = 0f;
