@@ -40,8 +40,21 @@ namespace Game.Scripts.Interactables
                     scoreChangeValue = -20;
                     break;
                 case InteractableType.ObstacleHacker:
+                    scoreChangeValue = -40;
+                    break;
+                case InteractableType.GoodGate50:
+                    scoreChangeValue = 50;
+                    break;
+                case InteractableType.GoodGate100:
+                    scoreChangeValue = 100;
+                    break;
+                case InteractableType.BadGate50:
                     scoreChangeValue = -50;
                     break;
+                case InteractableType.BadGate100:
+                    scoreChangeValue = -100;
+                    break;
+                
                     
             }
             interactableValue?.Invoke(scoreChangeValue);
