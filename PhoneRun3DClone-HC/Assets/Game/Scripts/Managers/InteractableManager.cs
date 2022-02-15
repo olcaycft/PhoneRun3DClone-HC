@@ -13,47 +13,22 @@ namespace Game.Scripts.Managers
         
         public void SetInteractableValue(InteractableType state)
         {
-            var interactableValue = 0;
-            switch (state)
+            var interactableValue = state switch
             {
-                case InteractableType.Collectable3:
-                    interactableValue = 80;
-                    break;
-                case InteractableType.Collectable10:
-                    interactableValue = 10;
-                    break;
-                case InteractableType.Collectable15:
-                    interactableValue = 15;
-                    break;
-                case InteractableType.Obstacle20:
-                    interactableValue = -20;
-                    break;
-                case InteractableType.Obstacle40:
-                    interactableValue = -40;
-                    break;
-                case InteractableType.ObstacleOldLady:
-                    interactableValue = -50;
-                    break;
-                case InteractableType.CollectableYoungLady:
-                    interactableValue = 50;
-                    break;
-                case InteractableType.GoodGate50:
-                    interactableValue = 50;
-                    break;
-                case InteractableType.GoodGate100:
-                    interactableValue = 100;
-                    break;
-                case InteractableType.BadGate50:
-                    interactableValue = -50;
-                    break;
-                case InteractableType.BadGate100:
-                    interactableValue = -100;
-                    break;
-                
-                    
-            }
+                InteractableType.Collectable3 => 80,
+                InteractableType.Collectable10 => 10,
+                InteractableType.Collectable15 => 15,
+                InteractableType.Obstacle20 => -20,
+                InteractableType.Obstacle40 => -40,
+                InteractableType.ObstacleOldLady => -50,
+                InteractableType.CollectableYoungLady => 50,
+                InteractableType.GoodGate50 => 50,
+                InteractableType.GoodGate100 => 100,
+                InteractableType.BadGate50 => -50,
+                InteractableType.BadGate100 => -100,
+                _ => 0
+            };
             interactableValueObserver?.Invoke(interactableValue);
-            
         }
     }
     public enum InteractableType
