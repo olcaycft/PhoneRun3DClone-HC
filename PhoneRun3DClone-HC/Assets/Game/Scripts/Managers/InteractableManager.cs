@@ -28,8 +28,14 @@ namespace Game.Scripts.Managers
                 case InteractableType.Obstacle20:
                     interactableValue = -20;
                     break;
-                case InteractableType.ObstacleHacker:
+                case InteractableType.Obstacle50:
                     interactableValue = -40;
+                    break;
+                case InteractableType.ObstacleOldLady:
+                    interactableValue = -50;
+                    break;
+                case InteractableType.CollectableYoungLady:
+                    interactableValue = 50;
                     break;
                 case InteractableType.GoodGate50:
                     interactableValue = 50;
