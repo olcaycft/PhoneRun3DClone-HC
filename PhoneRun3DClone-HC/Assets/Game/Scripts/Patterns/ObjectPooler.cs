@@ -9,9 +9,9 @@ namespace Game.Scripts.Patterns
     {
         public List<Pool> pools;
         public Dictionary<PlayerStates, Queue<GameObject>> poolDictionary;
+
         private void Awake()
         {
-            
             poolDictionary = new Dictionary<PlayerStates, Queue<GameObject>>();
             foreach (var pool in pools)
             {
@@ -27,20 +27,20 @@ namespace Game.Scripts.Patterns
             }
         }
 
-        public GameObject SpawnFromPool(PlayerStates tag, Vector3 position, Quaternion rotation)
+        public GameObject SpawnFromPool(PlayerStates state, Vector3 position, Quaternion rotation)
         {
-            if (!poolDictionary.ContainsKey(tag))
+            if (!poolDictionary.ContainsKey(state))
             {
-                Debug.Log("Pool with tag" + tag + "doesnt exist");
+                Debug.Log("Pool with tag" + state + "doesnt exist");
                 return null;
             }
 
-            GameObject objToSpawn = poolDictionary[tag].Dequeue();
+            GameObject objToSpawn = poolDictionary[state].Dequeue();
             objToSpawn.SetActive(true);
             objToSpawn.transform.position = position;
             objToSpawn.transform.rotation = rotation;
 
-            poolDictionary[tag].Enqueue(objToSpawn);
+            poolDictionary[state].Enqueue(objToSpawn);
             return objToSpawn;
         }
     }
@@ -52,12 +52,7 @@ namespace Game.Scripts.Patterns
         public GameObject prefab;
         public int size;
     }
-    /*[System.Serializable]
-    public class Player
-    {
-        public PlayerStates state;
-        public GameObject prefab;
-    }*/
+
     [System.Serializable]
     public enum PlayerStates
     {

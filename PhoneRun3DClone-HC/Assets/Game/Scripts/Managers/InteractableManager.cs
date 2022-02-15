@@ -28,7 +28,7 @@ namespace Game.Scripts.Managers
                 case InteractableType.Obstacle20:
                     interactableValue = -20;
                     break;
-                case InteractableType.Obstacle50:
+                case InteractableType.Obstacle40:
                     interactableValue = -40;
                     break;
                 case InteractableType.ObstacleOldLady:
@@ -55,5 +55,20 @@ namespace Game.Scripts.Managers
             interactableValueObserver?.Invoke(interactableValue);
             
         }
+    }
+    public enum InteractableType
+    {
+        Collectable3,
+        Collectable10,
+        Collectable15,
+        Obstacle20,
+        Obstacle40,
+        ObstacleOldLady,
+        CollectableYoungLady,
+        Gate,
+        GoodGate50,
+        GoodGate100,
+        BadGate50,
+        BadGate100
     }
 }

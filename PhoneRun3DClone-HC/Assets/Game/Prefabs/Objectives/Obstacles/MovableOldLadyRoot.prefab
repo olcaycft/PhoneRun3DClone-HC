@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01fdba57ee354ec4690336d89e540235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 5
+  baseInteractableType: 5
   sideMovementRoot: {fileID: 1466620111150752525}
   gateRightLimit: {fileID: 1466620110670255040}
   gateLeftLimit: {fileID: 1466620111240099552}

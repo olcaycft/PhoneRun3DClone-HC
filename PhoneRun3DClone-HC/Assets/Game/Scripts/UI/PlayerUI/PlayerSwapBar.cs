@@ -33,10 +33,9 @@ namespace Game.Scripts.UI.PlayerUI
         // karakter değişti eventi bekliyor.
         private void ChangePlayerName(PlayerStates state)
         {
-            Debug.Log(state);
             ChangeBarPercentage(0);
             //add = state.Equals(PlayerStates.Old.ToString()) || state.Equals(PlayerStates.Average.ToString()) ? "" : "!";
-            add = state == PlayerStates.Old || state == PlayerStates.Average ? "!" : "";
+            add = state == PlayerStates.Old || state == PlayerStates.Slow ? "!" : "";
             currentPlayerName.text = state + add;
             
         }
@@ -60,7 +59,7 @@ namespace Game.Scripts.UI.PlayerUI
 
             if (pct < 0)
                 pct = 0;
-            else if (pct > 100)
+            else if (pct >= 100)
                 pct = 100;
 
             foregroundImage.fillAmount = pct;

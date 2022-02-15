@@ -6,7 +6,7 @@ namespace Game.Scripts.Interactables
 {
     public class InteractableBase : MonoBehaviour
     {
-        [SerializeField] private InteractableType interactable;
+        [SerializeField] protected InteractableType baseInteractableType;
 
         public virtual void Move()
         {
@@ -15,24 +15,10 @@ namespace Game.Scripts.Interactables
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                InteractableManager.Instance.SetInteractableValue(interactable);
+                InteractableManager.Instance.SetInteractableValue(baseInteractableType);
             }
         }
     }
     
-    public enum InteractableType
-    {
-        Collectable3,
-        Collectable10,
-        Collectable15,
-        Obstacle20,
-        Obstacle50,
-        ObstacleOldLady,
-        CollectableYoungLady,
-        GoodGate50,
-        GoodGate100,
-        BadGate50,
-        BadGate100
-    }
 }
 

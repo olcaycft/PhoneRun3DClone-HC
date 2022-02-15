@@ -12,17 +12,13 @@ namespace Game.Scripts.Managers
 
         private int playerCount;
         private int currentPlayerStateIndex;
-        //private GameObject currentPlayer;
-        
-
         
         public static event Action<float> scoreChangedObserver;
         private PlayerStates currentPlayerStates;
 
-        private void Awake()
+        private void Start()
         {
             playerCount = playerStatesList.Count;
-            
             InteractableManager.interactableValueObserver += ChangeScoreValue;
             ChangePlayer(currentPlayerStateIndex);
         }
@@ -42,7 +38,7 @@ namespace Game.Scripts.Managers
             {
                 PreviousPlayer();
             }
-            else if (playerChangeValue > 100)
+            else if (playerChangeValue >= 100)
             {
                 NextPlayer();
             }
@@ -81,10 +77,6 @@ namespace Game.Scripts.Managers
         private void ChangePlayer(int currentPlayerStateIndex)
         {
             SpawnManager.Instance.SpawnRequest(playerStatesList[currentPlayerStateIndex]);
-           // currentPlayer = Instantiate(playerList[currentPlayerStateIndex].prefab, playerParent.transform.position,Quaternion.identity);
-            //currentPlayer.transform.parent = playerParent.transform;
-            //
-            Debug.Log("player changed and current score = "+playerChangeValue);
         }
         
         private void ClearPlayerChangeScore()
@@ -93,10 +85,6 @@ namespace Game.Scripts.Managers
             scoreChangedObserver?.Invoke(playerChangeValue);
         }
 
-        private void SetPlayerCount(int count)
-        {
-            playerCount = count;
-        }
     }
 
     
