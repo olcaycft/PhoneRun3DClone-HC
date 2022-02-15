@@ -1,29 +1,30 @@
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using Game.Scripts.Interactables;
+using Game.Scripts.Patterns;
 using UnityEngine;
 
 namespace Game.Scripts.Managers
 {
     public class PlayerStateManager : MonoBehaviour
     {
-        [SerializeField] private float playerChangeScore;
-        public List<Player> playerList;
+        [SerializeField] private float playerChangeValue;
+        [SerializeField]private List<PlayerStates> playerStatesList;
+
+        private int playerCount;
         private int currentPlayerStateIndex;
+        //private GameObject currentPlayer;
+        
 
-
-        private GameObject currentPlayer;
-        [SerializeField] private GameObject playerParent;
-
-        public static event Action<PlayerStates> playerChanged;
+        
         public static event Action<float> scoreChanged;
         private PlayerStates currentPlayerStates;
 
         private void Awake()
         {
+            playerCount = playerStatesList.Count;
+            
             InteractableController.interactableValue += ChangeScoreValue;
-
             ChangePlayer(currentPlayerStateIndex);
         }
 
@@ -34,15 +35,15 @@ namespace Game.Scripts.Managers
 
         private void ChangeScoreValue(float score)
         {
-            playerChangeScore += score;
+            playerChangeValue += score;
             
-            scoreChanged?.Invoke(playerChangeScore);
+            scoreChanged?.Invoke(playerChangeValue);
             
-            if (playerChangeScore < 0)
+            if (playerChangeValue < 0)
             {
                 PreviousPlayer();
             }
-            else if (playerChangeScore > 100)
+            else if (playerChangeValue > 100)
             {
                 NextPlayer();
             }
@@ -52,7 +53,7 @@ namespace Game.Scripts.Managers
 
         private void PreviousPlayer()
         {
-            playerChangeScore = 0;
+            playerChangeValue = 0;
             currentPlayerStateIndex--;
             if (currentPlayerStateIndex < 0)
             {
@@ -60,7 +61,6 @@ namespace Game.Scripts.Managers
             }
             else
             {
-                Destroy(currentPlayer);
                 ClearPlayerChangeScore();
                 ChangePlayer(currentPlayerStateIndex);
             }
@@ -68,11 +68,12 @@ namespace Game.Scripts.Managers
 
         private void NextPlayer()
         {
-            playerChangeScore = 0;
+            playerChangeValue = 0;
             currentPlayerStateIndex++;
-            if (currentPlayerStateIndex < playerList.Count)
+            if (currentPlayerStateIndex < playerCount)
             {
-                Destroy(currentPlayer);
+                Debug.Log("next player");
+                //Destroy(currentPlayer);
                 ClearPlayerChangeScore();
                 ChangePlayer(currentPlayerStateIndex);
             }
@@ -80,32 +81,24 @@ namespace Game.Scripts.Managers
 
         private void ChangePlayer(int currentPlayerStateIndex)
         {
-            currentPlayer = Instantiate(playerList[currentPlayerStateIndex].prefab, playerParent.transform.position,
-                Quaternion.identity);
-            currentPlayer.transform.parent = playerParent.transform;
-            playerChanged?.Invoke(playerList[currentPlayerStateIndex].state);
+            SpawnManager.Instance.SpawnRequest(playerStatesList[currentPlayerStateIndex]);
+           // currentPlayer = Instantiate(playerList[currentPlayerStateIndex].prefab, playerParent.transform.position,Quaternion.identity);
+            //currentPlayer.transform.parent = playerParent.transform;
+            //
+            Debug.Log("player changed and current score = "+playerChangeValue);
         }
         
         private void ClearPlayerChangeScore()
         {
-            playerChangeScore = 0;
-            scoreChanged?.Invoke(playerChangeScore);
+            playerChangeValue = 0;
+            scoreChanged?.Invoke(playerChangeValue);
+        }
+
+        private void SetPlayerCount(int count)
+        {
+            playerCount = count;
         }
     }
 
-    [System.Serializable]
-    public class Player
-    {
-        public PlayerStates state;
-        public GameObject prefab;
-    }
-
-    public enum PlayerStates
-    {
-        Old,
-        Slow,
-        Average,
-        Modern,
-        Futuristic
-    }
+    
 }

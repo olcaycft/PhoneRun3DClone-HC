@@ -1,6 +1,6 @@
 using System.Collections;
-using Game.Scripts.Interactables;
 using Game.Scripts.Managers;
+using Game.Scripts.Patterns;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,13 +21,13 @@ namespace Game.Scripts.UI.PlayerUI
         private void Awake()
         {
             PlayerStateManager.scoreChanged += ChangeBarPercentage;
-            PlayerStateManager.playerChanged += ChangePlayerName;
+            SpawnManager.playerChanged += ChangePlayerName;
         }
 
         private void OnDestroy()
         {
             PlayerStateManager.scoreChanged -= ChangeBarPercentage;
-            PlayerStateManager.playerChanged -= ChangePlayerName;
+            SpawnManager.playerChanged -= ChangePlayerName;
         }
 
         // karakter değişti eventi bekliyor.
