@@ -20,14 +20,14 @@ namespace Game.Scripts.UI.PlayerUI
 
         private void Awake()
         {
-            PlayerStateManager.scoreChanged += ChangeBarPercentage;
-            SpawnManager.playerChanged += ChangePlayerName;
+            PlayerStateManager.scoreChangedObserver += ChangeBarPercentage;
+            SpawnManager.playerChangedObserver += ChangePlayerName;
         }
 
         private void OnDestroy()
         {
-            PlayerStateManager.scoreChanged -= ChangeBarPercentage;
-            SpawnManager.playerChanged -= ChangePlayerName;
+            PlayerStateManager.scoreChangedObserver -= ChangeBarPercentage;
+            SpawnManager.playerChangedObserver -= ChangePlayerName;
         }
 
         // karakter değişti eventi bekliyor.

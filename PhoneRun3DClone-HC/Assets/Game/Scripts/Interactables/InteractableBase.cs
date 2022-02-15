@@ -1,4 +1,5 @@
 using System;
+using Game.Scripts.Managers;
 using UnityEngine;
 
 namespace Game.Scripts.Interactables
@@ -7,10 +8,6 @@ namespace Game.Scripts.Interactables
     {
         [SerializeField] private InteractableType interactable;
 
-        public static event Action<InteractableType> colisionWithInteractable;
-
-        
-        
         public virtual void Move()
         {
         }
@@ -18,7 +15,7 @@ namespace Game.Scripts.Interactables
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                colisionWithInteractable?.Invoke(interactable);
+                InteractableManager.Instance.SetInteractableValue(interactable);
             }
         }
     }

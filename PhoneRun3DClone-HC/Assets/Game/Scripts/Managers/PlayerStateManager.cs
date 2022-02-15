@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Game.Scripts.Interactables;
 using Game.Scripts.Patterns;
 using UnityEngine;
 
@@ -17,27 +16,27 @@ namespace Game.Scripts.Managers
         
 
         
-        public static event Action<float> scoreChanged;
+        public static event Action<float> scoreChangedObserver;
         private PlayerStates currentPlayerStates;
 
         private void Awake()
         {
             playerCount = playerStatesList.Count;
             
-            InteractableController.interactableValue += ChangeScoreValue;
+            InteractableManager.interactableValueObserver += ChangeScoreValue;
             ChangePlayer(currentPlayerStateIndex);
         }
 
         private void OnDestroy()
         {
-            InteractableController.interactableValue -= ChangeScoreValue;
+            InteractableManager.interactableValueObserver -= ChangeScoreValue;
         }
 
         private void ChangeScoreValue(float score)
         {
             playerChangeValue += score;
             
-            scoreChanged?.Invoke(playerChangeValue);
+            scoreChangedObserver?.Invoke(playerChangeValue);
             
             if (playerChangeValue < 0)
             {
@@ -91,7 +90,7 @@ namespace Game.Scripts.Managers
         private void ClearPlayerChangeScore()
         {
             playerChangeValue = 0;
-            scoreChanged?.Invoke(playerChangeValue);
+            scoreChangedObserver?.Invoke(playerChangeValue);
         }
 
         private void SetPlayerCount(int count)

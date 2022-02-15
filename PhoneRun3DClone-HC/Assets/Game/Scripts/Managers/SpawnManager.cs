@@ -9,7 +9,7 @@ namespace Game.Scripts.Managers
         private GameObject currentPlayer;
         [SerializeField] private GameObject playerParent;
         private PlayerStates states;
-        public static event Action<PlayerStates> playerChanged;
+        public static event Action<PlayerStates> playerChangedObserver;
 
         public void SpawnRequest(PlayerStates state)
         {
@@ -24,7 +24,7 @@ namespace Game.Scripts.Managers
                 ObjectPooler.Instance.SpawnFromPool(state, playerParent.transform.position, Quaternion.identity);
             currentPlayer.transform.parent = playerParent.transform;
             
-            playerChanged?.Invoke(state);
+            playerChangedObserver?.Invoke(state);
         }
     }
 }
