@@ -56,7 +56,7 @@ namespace Game.Scripts.Managers
 
         public void TotalDiamondCount()
         {
-            totalDiamondTxt.text = $"{PlayerPrefs.GetInt("HighScore",0)}";
+            totalDiamondTxtInWin.text = $"{PlayerPrefs.GetInt("HighScore",0)}";
         }
 
         public void TextCurrentLevel()
