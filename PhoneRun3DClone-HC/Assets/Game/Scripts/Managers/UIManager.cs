@@ -60,7 +60,7 @@ namespace Game.Scripts.Managers
 
         public void TextCurrentLevel()
         {
-            levelTxt.text = $"Level {PlayerPrefs.GetInt("Level",1)}";
+            levelTxt.text = $"{PlayerPrefs.GetInt("Level",1)}";
         }
     }
 }
