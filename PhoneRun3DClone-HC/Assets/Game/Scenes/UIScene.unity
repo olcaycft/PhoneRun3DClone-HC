@@ -1578,7 +1578,7 @@ MonoBehaviour:
   winUI: {fileID: 551077901}
   inGameDiamondTxt: {fileID: 166632634}
   totalDiamondTxtInGame: {fileID: 514791722}
-  totalDiamondTxtInWin: {fileID: 0}
+  totalDiamondTxtInWin: {fileID: 1722296045}
   currentLevelTxt: {fileID: 808348683}
   nextLevelTxt: {fileID: 344038410}
 --- !u!1 &666375221

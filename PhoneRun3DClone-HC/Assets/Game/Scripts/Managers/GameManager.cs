@@ -9,34 +9,33 @@ namespace Game.Scripts.Managers
         [SerializeField] private int inGameDiamondCount;
         
 
-        public static event Action GameStartObserver;
+        public static event Action gameStartObserver;
         public static event Action levelFinishedObserver;
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
-            inGameDiamondCount = PlayerPrefs.GetInt("DiamondCount");
+            inGameDiamondCount = 0;
         }
         public void StartThisLevel()
         {
             UIManager.Instance.StartGame();
-            inGameDiamondCount = PlayerPrefs.GetInt("DiamondCount");
-            UIManager.Instance.InGameDiamond(inGameDiamondCount);
-            GameStartObserver?.Invoke();
+            inGameDiamondCount = 0;
+            UIManager.Instance.TotalDiamondTextInGameUI();
+            gameStartObserver?.Invoke();
         }
         public void ChangeDiamondCount(int index)
         {
             inGameDiamondCount += index;
-            UIManager.Instance.InGameDiamond(inGameDiamondCount);
         }
 
 
         public void Won()
         {
             UIManager.Instance.Win();
-            UIManager.Instance.FinishScore(inGameDiamondCount);
+            UIManager.Instance.CollectedDiamondsInGame(inGameDiamondCount);
             inGameDiamondCount *= MiniGameManager.Instance.GetDiamondMultiplier();
             PlayerPrefs.SetInt("DiamondCount", inGameDiamondCount + PlayerPrefs.GetInt("DiamondCount"));
-            
+            UIManager.Instance.TotalDiamondTextInWınUI();
             levelFinishedObserver?.Invoke();
         }
 

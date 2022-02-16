@@ -16,7 +16,7 @@ namespace Game.Scripts.Managers
         [SerializeField] private TextMeshProUGUI currentLevelTxt;
         [SerializeField] private TextMeshProUGUI nextLevelTxt;
 
-        private int inGameDiamond;
+        //private int inGameDiamond;
         private void Awake()
         {
             startUI.SetActive(true);
@@ -42,19 +42,19 @@ namespace Game.Scripts.Managers
             winUI.SetActive(true);
         }
 
-        public void InGameDiamond(int score)
+        public void CollectedDiamondsInGame(int score)
         {
-            this.inGameDiamond = score;
-            inGameDiamondTxt.text = this.inGameDiamond.ToString();
-            this.inGameDiamond = 0;
+            //this.inGameDiamond = score;
+            inGameDiamondTxt.text = score.ToString();
+            //this.inGameDiamond = 0;
         }
 
-        public void FinishScore(int score)
+        public void TotalDiamondTextInGameUI()
         {
-            totalDiamondTxtInGame.text = score.ToString();
+            totalDiamondTxtInGame.text = $"{PlayerPrefs.GetInt("HighScore",0)}";
         }
 
-        public void TotalDiamondCount()
+        public void TotalDiamondTextInWınUI()
         {
             totalDiamondTxtInWin.text = $"{PlayerPrefs.GetInt("HighScore",0)}";
         }
