@@ -11,9 +11,10 @@ namespace Game.Scripts.Managers
         [SerializeField] private GameObject failUI;
         [SerializeField] private GameObject winUI;
         [SerializeField] private TextMeshProUGUI inGameDiamondTxt;
-        [SerializeField] private TextMeshProUGUI totalDiamondTxt;
-        [SerializeField] private TextMeshProUGUI finishScoreTxt;
-        [SerializeField] private TextMeshProUGUI levelTxt;
+        [SerializeField] private TextMeshProUGUI totalDiamondTxtInGame;
+        [SerializeField] private TextMeshProUGUI totalDiamondTxtInWin;
+        [SerializeField] private TextMeshProUGUI currentLevelTxt;
+        [SerializeField] private TextMeshProUGUI nextLevelTxt;
 
         private int inGameDiamond;
         private void Awake()
@@ -50,7 +51,7 @@ namespace Game.Scripts.Managers
 
         public void FinishScore(int score)
         {
-            finishScoreTxt.text = score.ToString();
+            totalDiamondTxtInGame.text = score.ToString();
         }
 
         public void TotalDiamondCount()
@@ -60,7 +61,8 @@ namespace Game.Scripts.Managers
 
         public void TextCurrentLevel()
         {
-            levelTxt.text = $"{PlayerPrefs.GetInt("Level",1)}";
+            currentLevelTxt.text = $"{PlayerPrefs.GetInt("Level",1)}";
+            nextLevelTxt.text = $"{PlayerPrefs.GetInt("Level",1)+1}";
         }
     }
 }
