@@ -34,6 +34,13 @@ namespace Game.Scripts.Managers
                 _ => 0
             };
             interactableValueObserver?.Invoke(interactableValue);
+
+            switch (state)
+            {
+                case InteractableType.Diamond:
+                    GameManager.Instance.ChangeInGameDiamondCount(1);
+                    break;
+            }
         }
     }
     public enum InteractableType
@@ -49,6 +56,7 @@ namespace Game.Scripts.Managers
         GoodGate50,
         GoodGate100,
         BadGate50,
-        BadGate100
+        BadGate100,
+        Diamond
     }
 }

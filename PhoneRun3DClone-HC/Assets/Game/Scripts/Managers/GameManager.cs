@@ -23,7 +23,7 @@ namespace Game.Scripts.Managers
             UIManager.Instance.TotalDiamondTextInGameUI();
             gameStartObserver?.Invoke();
         }
-        public void ChangeDiamondCount(int index)
+        public void ChangeInGameDiamondCount(int index)
         {
             inGameDiamondCount += index;
         }
