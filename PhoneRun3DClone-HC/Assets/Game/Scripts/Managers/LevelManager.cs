@@ -59,13 +59,14 @@ namespace Game.Scripts.Managers
         public void PlayCurrentLevel()
         {
             LoadLevel(currentLevel);
-            ChangeLevelTextValue(level);
+            
         }
 
         public void PlayNextLevel()
         {
             nextLevel = currentLevel + 1;
             level++;
+            PlayerPrefs.SetInt("Level", level);
             if (nextLevel < SceneManager.sceneCountInBuildSettings)
             {
                 LoadLevel(nextLevel);
@@ -76,12 +77,12 @@ namespace Game.Scripts.Managers
             }
         }
         
-        public void ChangeLevelTextValue(int level)
+        /*public void ChangeLevelTextValue(int level)
         {
             PlayerPrefs.SetInt("Level", level);
             this.level = level;
             UIManager.Instance.TextCurrentLevel();
-        }
+        }*/
         
     }
 }
