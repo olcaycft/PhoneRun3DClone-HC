@@ -8,7 +8,6 @@ namespace Game.Scripts.Managers
     {
         private GameObject currentPlayer;
         [SerializeField] private GameObject playerParent;
-        //private PlayerStates states;
         public static event Action<PlayerStates> playerChangedObserver;
 
         public void SpawnRequest(PlayerStates state)

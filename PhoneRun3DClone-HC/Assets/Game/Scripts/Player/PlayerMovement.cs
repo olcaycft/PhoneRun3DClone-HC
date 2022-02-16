@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Scripts.Managers;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,12 +18,25 @@ public class PlayerMovement : MonoBehaviour
     //private float sideMovementSensitivity => SettingsManager.GameSettings.playerSideMovementSensitivity;
     //private float sideMovementLerpSpeed => SettingsManager.GameSettings.playerSideMovementLerpSpeed;
     //private float forwardSpeed => SettingsManager.GameSettings.playerForwardSpeed;
-    
+
     private float sideMovementSensitivity = 1f;
     private float sideMovementLerpSpeed = 3f;
     private float forwardSpeed = 5f;
 
     private float sideMovementTarget = 0f;
+
+    private bool isGameStart;
+    private bool isLevelFinish;
+
+    private void OnEnable()
+    {
+        PlayerStateManager.levelFinishedObserver += ChangeLevelState;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerStateManager.levelFinishedObserver -= ChangeLevelState;
+    }
 
     private Vector2 mousePositionCM
     {
@@ -37,8 +52,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (isLevelFinish)
+        {
+            return;
+        }
         HandleInput();
         SideMovement();
+        if (!isGameStart)
+        {
+            return;
+        }
+
         ForwardMovement();
     }
 
@@ -54,6 +78,12 @@ public class PlayerMovement : MonoBehaviour
             var deltaMouse = mousePositionCM - previousMousePosition;
             inputDrag = deltaMouse;
             previousMousePosition = mousePositionCM;
+            
+            if (!isGameStart && (inputDrag.x != 0 || inputDrag.y != 0))
+            {
+                isGameStart = true;
+                GameManager.Instance.StartThisLevel();
+            }
         }
         else
         {
@@ -61,6 +91,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    /*private void HandleGameStart()
+    {
+        if (Input.GetMouseButton(0) && !Extentions.IsOverUi() && !isGameStart)
+        {
+            GameManager.Instance.StartThisLevel();
+            isGameStart = true;
+        }
+    }*/
     private void SideMovement()
     {
         sideMovementTarget += inputDrag.x * sideMovementSensitivity;
@@ -72,6 +110,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void ForwardMovement()
     {
-        transform.position+=Vector3.forward*Time.deltaTime* forwardSpeed;
+        transform.position += Vector3.forward * Time.deltaTime * forwardSpeed;
+    }
+
+    private void ChangeLevelState()
+    {
+        isLevelFinish = true;
     }
 }

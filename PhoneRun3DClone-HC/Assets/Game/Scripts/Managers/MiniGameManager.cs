@@ -2,14 +2,14 @@ using System;
 using Game.Scripts.Patterns;
 using UnityEngine;
 
-namespace Game.Scripts.MiniGame
+namespace Game.Scripts.Managers
 {
     public class MiniGameManager : MonoSingleton<MiniGameManager>
     {
         private int diamondMultiplier = 1;
 
         public static event Action miniGameStartedObserver;
-        public static event Action playerAtFinishPart;
+        public static event Action playerAtFinishPartObserver;
 
         public void SetMultiplierValue(MiniGameStates state)
         {
@@ -23,7 +23,7 @@ namespace Game.Scripts.MiniGame
                 case MiniGameStates.X3Finish:
                 case MiniGameStates.X4Finish:
                 case MiniGameStates.X5Finish:
-                    playerAtFinishPart?.Invoke();
+                    playerAtFinishPartObserver?.Invoke();
                     break;
             }
 

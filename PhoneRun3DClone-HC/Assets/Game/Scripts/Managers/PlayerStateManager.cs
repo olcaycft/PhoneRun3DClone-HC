@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Game.Scripts.MiniGame;
 using Game.Scripts.Patterns;
 using UnityEngine;
 
@@ -13,12 +12,12 @@ namespace Game.Scripts.Managers
 
         private int playerCount;
         private int currentPlayerStateIndex;
-
-        public static event Action<float> scoreChangedObserver;
         private PlayerStates currentPlayerStates;
+        public static event Action<float> scoreChangedObserver;
+        public static event Action levelFinishedObserver;
+        
 
         [SerializeField] private bool isMiniGameStart;
-
         private void Start()
         {
             playerCount = playerStatesList.Count;
@@ -27,12 +26,14 @@ namespace Game.Scripts.Managers
 
 
             MiniGameManager.miniGameStartedObserver += ChangeMiniGameState;
-            MiniGameManager.playerAtFinishPart += PreviousPlayer;
+            MiniGameManager.playerAtFinishPartObserver += PreviousPlayer;
         }
 
         private void OnDestroy()
         {
             InteractableManager.interactableValueObserver -= ChangeScoreValue;
+            MiniGameManager.miniGameStartedObserver -= ChangeMiniGameState;
+            MiniGameManager.playerAtFinishPartObserver -= PreviousPlayer;
         }
 
         private void ChangeScoreValue(float score)
@@ -59,10 +60,12 @@ namespace Game.Scripts.Managers
             if (currentPlayerStateIndex < 0 && !isMiniGameStart)
             {
                 Debug.Log("LevelFail");
+                levelFinishedObserver?.Invoke();
             }
             else if (currentPlayerStateIndex < 0 && isMiniGameStart)
             {
                 //Win that Game
+                levelFinishedObserver?.Invoke();
                 Debug.Log("you win that game here you at x " + MiniGameManager.Instance.GetDiamondMultiplier());
             }
             else if (currentPlayerStateIndex >= 0)
