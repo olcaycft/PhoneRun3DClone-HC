@@ -10,7 +10,12 @@ namespace Game.Scripts.Managers
         private float playerSwapScore;
 
         public static event Action<float> interactableValueObserver;
-        
+
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         public void SetInteractableValue(InteractableType state)
         {
             var interactableValue = state switch

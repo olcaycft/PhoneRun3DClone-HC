@@ -11,6 +11,11 @@ namespace Game.Scripts.Managers
         public static event Action miniGameStartedObserver;
         public static event Action playerAtFinishPartObserver;
 
+        private void Awake()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         public void SetMultiplierValue(MiniGameStates state)
         {
             switch (state)
@@ -41,6 +46,7 @@ namespace Game.Scripts.Managers
             if (state==MiniGameStates.X6Finish)
             {
                 //win direcly
+                GameManager.Instance.Won();
                 Debug.Log("finish the game and show win ui");
             }
         }

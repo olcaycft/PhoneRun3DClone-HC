@@ -30,12 +30,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerStateManager.levelFinishedObserver += ChangeLevelState;
+        GameManager.levelFinishedObserver += ChangeLevelState;
     }
 
     private void OnDestroy()
     {
-        PlayerStateManager.levelFinishedObserver -= ChangeLevelState;
+        GameManager.levelFinishedObserver -= ChangeLevelState;
     }
 
     private Vector2 mousePositionCM

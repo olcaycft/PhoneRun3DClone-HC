@@ -933,6 +933,7 @@ GameObject:
   - component: {fileID: 347543491}
   - component: {fileID: 347543490}
   - component: {fileID: 347543489}
+  - component: {fileID: 347543492}
   m_Layer: 0
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1003,7 +1004,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 347543490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 347543492}
+        m_TargetAssemblyTypeName: "Game.Scripts.UI.U\u0131ButtonActions, Assembly-CSharp"
+        m_MethodName: PlayCurrentLevelAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &347543490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,6 +1055,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347543487}
   m_CullTransparentMesh: 1
+--- !u!114 &347543492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347543487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277b81313ea6c6442a53da87e6560744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &394983594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,7 +1578,7 @@ MonoBehaviour:
   winUI: {fileID: 551077901}
   inGameDiamondTxt: {fileID: 166632634}
   totalDiamondTxtInGame: {fileID: 514791722}
-  totalDiamondTxt: {fileID: 1722296045}
+  totalDiamondTxtInWin: {fileID: 0}
   currentLevelTxt: {fileID: 808348683}
   nextLevelTxt: {fileID: 344038410}
 --- !u!1 &666375221
@@ -2282,7 +2307,6 @@ GameObject:
   m_Component:
   - component: {fileID: 987328072}
   - component: {fileID: 987328071}
-  - component: {fileID: 987328070}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2290,14 +2314,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &987328070
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 987328069}
-  m_Enabled: 1
 --- !u!20 &987328071
 Camera:
   m_ObjectHideFlags: 0
@@ -2307,7 +2323,7 @@ Camera:
   m_GameObject: {fileID: 987328069}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.7877358, g: 0.8673349, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -2367,6 +2383,7 @@ GameObject:
   - component: {fileID: 1064713520}
   - component: {fileID: 1064713519}
   - component: {fileID: 1064713518}
+  - component: {fileID: 1064713521}
   m_Layer: 0
   m_Name: NextButton
   m_TagString: Untagged
@@ -2437,7 +2454,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1064713519}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1064713521}
+        m_TargetAssemblyTypeName: "Game.Scripts.UI.U\u0131ButtonActions, Assembly-CSharp"
+        m_MethodName: PlayNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1064713519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2476,6 +2505,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064713516}
   m_CullTransparentMesh: 1
+--- !u!114 &1064713521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064713516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277b81313ea6c6442a53da87e6560744, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1097730895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,7 +3174,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1892230889
 MonoBehaviour:
   m_ObjectHideFlags: 0

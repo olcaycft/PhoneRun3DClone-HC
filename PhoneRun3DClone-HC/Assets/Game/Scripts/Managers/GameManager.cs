@@ -10,15 +10,17 @@ namespace Game.Scripts.Managers
         
 
         public static event Action GameStartObserver;
+        public static event Action levelFinishedObserver;
         private void Awake()
         {
-            //DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);
             inGameDiamondCount = PlayerPrefs.GetInt("DiamondCount");
         }
         public void StartThisLevel()
         {
             UIManager.Instance.StartGame();
             inGameDiamondCount = PlayerPrefs.GetInt("DiamondCount");
+            UIManager.Instance.InGameDiamond(inGameDiamondCount);
             GameStartObserver?.Invoke();
         }
         public void ChangeDiamondCount(int index)
@@ -27,25 +29,23 @@ namespace Game.Scripts.Managers
             UIManager.Instance.InGameDiamond(inGameDiamondCount);
         }
 
-        public void CurrentDiamondAtFinish(int index)
-        {
-            inGameDiamondCount *= index;
-            PlayerPrefs.SetInt("DiamondCount", inGameDiamondCount + PlayerPrefs.GetInt("DiamondCount"));
-            Won();
-        }
 
         public void Won()
         {
             UIManager.Instance.Win();
             UIManager.Instance.FinishScore(inGameDiamondCount);
-            UIManager.Instance.TotalDiamondCount();
-            inGameDiamondCount = PlayerPrefs.GetInt("DiamondCount");
+            inGameDiamondCount *= MiniGameManager.Instance.GetDiamondMultiplier();
+            PlayerPrefs.SetInt("DiamondCount", inGameDiamondCount + PlayerPrefs.GetInt("DiamondCount"));
+            
+            levelFinishedObserver?.Invoke();
         }
 
         public void Failed()
         {
             inGameDiamondCount = PlayerPrefs.GetInt("DiamondCount");
             UIManager.Instance.Fail();
+            
+            levelFinishedObserver?.Invoke();
         }
 
         

@@ -14,7 +14,7 @@ namespace Game.Scripts.Managers
         private int currentPlayerStateIndex;
         private PlayerStates currentPlayerStates;
         public static event Action<float> scoreChangedObserver;
-        public static event Action levelFinishedObserver;
+        
         
 
         [SerializeField] private bool isMiniGameStart;
@@ -60,12 +60,12 @@ namespace Game.Scripts.Managers
             if (currentPlayerStateIndex < 0 && !isMiniGameStart)
             {
                 Debug.Log("LevelFail");
-                levelFinishedObserver?.Invoke();
+                GameManager.Instance.Failed();
             }
             else if (currentPlayerStateIndex < 0 && isMiniGameStart)
             {
                 //Win that Game
-                levelFinishedObserver?.Invoke();
+                GameManager.Instance.Won();
                 Debug.Log("you win that game here you at x " + MiniGameManager.Instance.GetDiamondMultiplier());
             }
             else if (currentPlayerStateIndex >= 0)
