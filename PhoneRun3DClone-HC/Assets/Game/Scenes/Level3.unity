@@ -399,6 +399,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff39a981d79ad6d4d98a321f01ee5f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &185751672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 185751673}
+  - component: {fileID: 185751674}
+  m_Layer: 0
+  m_Name: AdMobManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &185751673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185751672}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1553157002}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &185751674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185751672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e587eaf642d73bf4299e76bcc7689e94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &197811426
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +543,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222206544}
-  m_LocalRotation: {x: 0.26098, y: -0.00000001661008, z: 0.0000000044905217, w: 0.96534425}
+  m_LocalRotation: {x: 0.26098, y: 0.000000016610082, z: -0.0000000044905226, w: 0.96534425}
   m_LocalPosition: {x: 0, y: 11, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1534,7 +1577,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054805933}
-  m_LocalRotation: {x: 0.26098, y: -0.00000001661008, z: 0.0000000044905217, w: 0.96534425}
+  m_LocalRotation: {x: 0.26098, y: 0.000000016610082, z: -0.0000000044905226, w: 0.96534425}
   m_LocalPosition: {x: 0, y: 11, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1755,6 +1798,7 @@ Transform:
   - {fileID: 1939675211}
   - {fileID: 1013073799}
   - {fileID: 260271755}
+  - {fileID: 185751673}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
