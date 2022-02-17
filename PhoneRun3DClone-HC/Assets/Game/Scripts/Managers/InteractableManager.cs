@@ -20,7 +20,7 @@ namespace Game.Scripts.Managers
         {
             var interactableValue = state switch
             {
-                InteractableType.Collectable3 => 80,
+                InteractableType.Collectable3 => 3,
                 InteractableType.Collectable10 => 10,
                 InteractableType.Collectable15 => 15,
                 InteractableType.Obstacle20 => -20,

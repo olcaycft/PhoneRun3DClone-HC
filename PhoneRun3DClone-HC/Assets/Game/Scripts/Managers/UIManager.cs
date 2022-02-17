@@ -45,19 +45,17 @@ namespace Game.Scripts.Managers
 
         public void CollectedDiamondsInGame(int score)
         {
-            //this.inGameDiamond = score;
             inGameDiamondTxt.text = score.ToString();
-            //this.inGameDiamond = 0;
         }
 
         public void TotalDiamondTextInGameUI()
         {
-            totalDiamondTxtInGame.text = $"{PlayerPrefs.GetInt("HighScore",0)}";
+            totalDiamondTxtInGame.text = $"{PlayerPrefs.GetInt("DiamondCount",0)}";
         }
 
         public void TotalDiamondTextInWınUI()
         {
-            totalDiamondTxtInWin.text = $"{PlayerPrefs.GetInt("HighScore",0)}";
+            totalDiamondTxtInWin.text = $"{PlayerPrefs.GetInt("DiamondCount",0)}";
         }
 
         public void TextCurrentLevel()
