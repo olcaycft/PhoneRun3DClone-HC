@@ -40,6 +40,8 @@ namespace Game.Scripts.Managers
 
         public void Failed()
         {
+            AdMobManager.Instance.RequestInterstitial();
+            AdMobManager.Instance.ShowInterstitial();
             inGameDiamondCount = PlayerPrefs.GetInt("DiamondCount");
             UIManager.Instance.Fail();
             
