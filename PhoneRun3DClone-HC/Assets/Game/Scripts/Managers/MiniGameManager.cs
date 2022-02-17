@@ -43,12 +43,8 @@ namespace Game.Scripts.Managers
                 _ => diamondMultiplier
             };
 
-            if (state==MiniGameStates.X5Finish)
-            {
-                //win direcly
-                GameManager.Instance.Won();
-                Debug.Log("finish the game and show win ui");
-            }
+            if (state != MiniGameStates.X5Finish) return;
+            GameManager.Instance.Won();
         }
 
         public int GetDiamondMultiplier()

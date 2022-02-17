@@ -10,10 +10,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 previousMousePosition;
 
     [SerializeField] private Transform sideMovementRoot;
-    [SerializeField] private Transform cannonRightLimit;
-    [SerializeField] private Transform cannonLeftLimit;
-    private float cannonRightLimitX => cannonRightLimit.localPosition.x;
-    private float cannonLeftLimitX => cannonLeftLimit.localPosition.x;
+    [SerializeField] private Transform playerRightLimit;
+    [SerializeField] private Transform playerLeftLimit;
+    private float playerRightLimitX => playerRightLimit.localPosition.x;
+    private float playerLeftLimitX => playerLeftLimit.localPosition.x;
 
     //private float sideMovementSensitivity => SettingsManager.GameSettings.playerSideMovementSensitivity;
     //private float sideMovementLerpSpeed => SettingsManager.GameSettings.playerSideMovementLerpSpeed;
@@ -78,31 +78,20 @@ public class PlayerMovement : MonoBehaviour
             var deltaMouse = mousePositionCM - previousMousePosition;
             inputDrag = deltaMouse;
             previousMousePosition = mousePositionCM;
-            
-            if (!isGameStart && (inputDrag.x != 0 || inputDrag.y != 0))
-            {
-                isGameStart = true;
-                GameManager.Instance.StartThisLevel();
-            }
+
+            if (isGameStart || (inputDrag.x == 0 && inputDrag.y == 0)) return;
+            isGameStart = true;
+            GameManager.Instance.StartThisLevel();
         }
         else
         {
             inputDrag = Vector2.zero;
         }
     }
-
-    /*private void HandleGameStart()
-    {
-        if (Input.GetMouseButton(0) && !Extentions.IsOverUi() && !isGameStart)
-        {
-            GameManager.Instance.StartThisLevel();
-            isGameStart = true;
-        }
-    }*/
     private void SideMovement()
     {
         sideMovementTarget += inputDrag.x * sideMovementSensitivity;
-        sideMovementTarget = Mathf.Clamp(sideMovementTarget, cannonLeftLimitX, cannonRightLimitX);
+        sideMovementTarget = Mathf.Clamp(sideMovementTarget, playerLeftLimitX, playerRightLimitX);
         var localPos = sideMovementRoot.localPosition;
         localPos.x = Mathf.Lerp(localPos.x, sideMovementTarget, Time.deltaTime * sideMovementLerpSpeed);
         sideMovementRoot.localPosition = localPos;

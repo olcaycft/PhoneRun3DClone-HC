@@ -48,7 +48,7 @@ namespace Game.Scripts.Managers
             inGameDiamondTxt.text = score.ToString();
         }
 
-        public void TotalDiamondTextInGameUI()
+        private void TotalDiamondTextInGameUI()
         {
             totalDiamondTxtInGame.text = $"{PlayerPrefs.GetInt("DiamondCount",0)}";
         }
@@ -58,7 +58,7 @@ namespace Game.Scripts.Managers
             totalDiamondTxtInWin.text = $"{PlayerPrefs.GetInt("DiamondCount",0)}";
         }
 
-        public void TextCurrentLevel()
+        private void TextCurrentLevel()
         {
             currentLevelTxt.text = $"{PlayerPrefs.GetInt("Level",1)}";
             nextLevelTxt.text = $"{PlayerPrefs.GetInt("Level",1)+1}";

@@ -247,8 +247,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sideMovementRoot: {fileID: 2005477691}
-  cannonRightLimit: {fileID: 936642212}
-  cannonLeftLimit: {fileID: 1136216053}
+  playerRightLimit: {fileID: 936642212}
+  playerLeftLimit: {fileID: 1136216053}
 --- !u!4 &36558401
 Transform:
   m_ObjectHideFlags: 0
@@ -353,7 +353,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249430243}
-  m_LocalRotation: {x: 0.26098, y: 0.000000016610082, z: -0.0000000044905226, w: 0.96534425}
+  m_LocalRotation: {x: 0.26098, y: -0.00000001661008, z: 0.0000000044905217, w: 0.96534425}
   m_LocalPosition: {x: 0, y: 11, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -469,7 +469,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435895788}
-  m_LocalRotation: {x: 0.26098, y: 0.000000016610082, z: -0.0000000044905226, w: 0.96534425}
+  m_LocalRotation: {x: 0.26098, y: -0.00000001661008, z: 0.0000000044905217, w: 0.96534425}
   m_LocalPosition: {x: 0, y: 11, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

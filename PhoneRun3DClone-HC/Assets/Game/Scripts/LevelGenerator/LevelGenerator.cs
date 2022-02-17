@@ -46,7 +46,7 @@ namespace Game.Scripts.LevelGenerator
             pattern.transform.parent = patternBase.transform;
             nextPatternStartPoint = pattern.transform.GetChild(0).transform.position;
 
-            for (int i = 0; i < patternCount; i++)
+            for (var i = 0; i < patternCount; i++)
             {
                 if (gateStartPoint == i && gateCountFlag <= gateCount)
                 {

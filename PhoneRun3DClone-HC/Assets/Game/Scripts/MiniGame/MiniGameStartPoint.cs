@@ -1,11 +1,12 @@
-using System;
 using UnityEngine;
 
-public class MiniGameStartPoint : MonoBehaviour
+namespace Game.Scripts.MiniGame
 {
-    private void Awake()
+    public class MiniGameStartPoint : MonoBehaviour
     {
-        Debug.Log(transform.position);
-        //this is for level progress bar
+        /*private void Awake()
+        {
+            Debug.Log(transform.position);
+        }*/
     }
 }

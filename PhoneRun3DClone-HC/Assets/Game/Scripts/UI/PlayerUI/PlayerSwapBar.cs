@@ -30,10 +30,9 @@ namespace Game.Scripts.UI.PlayerUI
             SpawnManager.playerChangedObserver -= ChangePlayerName;
         }
 
-        // karakter değişti eventi bekliyor.
+        
         private void ChangePlayerName(PlayerStates state)
         {
-            //ChangeBarPercentage(0);
             //add = state.Equals(PlayerStates.Old.ToString()) || state.Equals(PlayerStates.Average.ToString()) ? "" : "!";
             add = state == PlayerStates.Old || state == PlayerStates.Slow ? "!" : "";
             currentPlayerName.text = state + add;
@@ -42,14 +41,14 @@ namespace Game.Scripts.UI.PlayerUI
 
         private void ChangeBarPercentage(float scoreForSwap)
         {
-            float currentPct = scoreForSwap / maxNumberForPlayerSwap;
+            var currentPct = scoreForSwap / maxNumberForPlayerSwap;
             StartCoroutine(ChangeToPct(currentPct));
         }
 
         private IEnumerator ChangeToPct(float pct)
         {
-            float preChangePct = foregroundImage.fillAmount;
-            float elapse = 0f;
+            var preChangePct = foregroundImage.fillAmount;
+            var elapse = 0f;
             while (elapse < updateSpeedSeconds)
             {
                 elapse += Time.deltaTime;

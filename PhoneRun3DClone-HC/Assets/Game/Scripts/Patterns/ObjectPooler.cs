@@ -8,17 +8,17 @@ namespace Game.Scripts.Patterns
     public class ObjectPooler : MonoSingleton<ObjectPooler>
     {
         public List<Pool> pools;
-        public Dictionary<PlayerStates, Queue<GameObject>> poolDictionary;
+        private Dictionary<PlayerStates, Queue<GameObject>> poolDictionary;
 
         private void Awake()
         {
             poolDictionary = new Dictionary<PlayerStates, Queue<GameObject>>();
             foreach (var pool in pools)
             {
-                Queue<GameObject> objectPool = new Queue<GameObject>();
-                for (int i = 0; i < pool.size; i++)
+                var objectPool = new Queue<GameObject>();
+                for (var i = 0; i < pool.size; i++)
                 {
-                    GameObject obj = Instantiate(pool.prefab);
+                    var obj = Instantiate(pool.prefab);
                     obj.SetActive(false);
                     objectPool.Enqueue(obj);
                 }
@@ -35,7 +35,7 @@ namespace Game.Scripts.Patterns
                 return null;
             }
 
-            GameObject objToSpawn = poolDictionary[state].Dequeue();
+            var objToSpawn = poolDictionary[state].Dequeue();
             objToSpawn.SetActive(true);
             objToSpawn.transform.position = position;
             objToSpawn.transform.rotation = rotation;
@@ -45,7 +45,7 @@ namespace Game.Scripts.Patterns
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Pool
     {
         public PlayerStates state;
@@ -53,7 +53,7 @@ namespace Game.Scripts.Patterns
         public int size;
     }
 
-    [System.Serializable]
+    [Serializable]
     public enum PlayerStates
     {
         Old,

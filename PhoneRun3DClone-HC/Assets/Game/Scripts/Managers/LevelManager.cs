@@ -77,12 +77,5 @@ namespace Game.Scripts.Managers
             }
         }
         
-        /*public void ChangeLevelTextValue(int level)
-        {
-            PlayerPrefs.SetInt("Level", level);
-            this.level = level;
-            UIManager.Instance.TextCurrentLevel();
-        }*/
-        
     }
 }
