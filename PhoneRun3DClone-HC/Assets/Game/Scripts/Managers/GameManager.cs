@@ -20,7 +20,6 @@ namespace Game.Scripts.Managers
         {
             UIManager.Instance.StartGame();
             inGameDiamondCount = 0;
-            UIManager.Instance.TotalDiamondTextInGameUI();
             gameStartObserver?.Invoke();
         }
         public void ChangeInGameDiamondCount(int index)

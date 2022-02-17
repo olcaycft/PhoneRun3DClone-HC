@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5367999151903765264}
   - component: {fileID: 4502666984125442581}
   m_Layer: 0
-  m_Name: Collectable
+  m_Name: Collectable10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5367999151903765265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.8, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46091bd4d8028084583f8d9b152006b8, type: 2}
+  - {fileID: 2100000, guid: 66e4f22ba4a68804fad4c2e57a952424, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c1c4f2948b7cdf41949875e89563018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactable: 0
+  baseInteractableType: 0

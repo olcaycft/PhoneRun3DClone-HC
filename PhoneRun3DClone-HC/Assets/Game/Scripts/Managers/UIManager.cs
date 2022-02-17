@@ -21,6 +21,7 @@ namespace Game.Scripts.Managers
         {
             startUI.SetActive(true);
             inGameUI.SetActive(true);
+            TotalDiamondTextInGameUI();
             TextCurrentLevel();
         }
 

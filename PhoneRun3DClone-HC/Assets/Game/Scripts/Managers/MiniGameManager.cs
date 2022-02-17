@@ -39,11 +39,11 @@ namespace Game.Scripts.Managers
                 MiniGameStates.X3Enter => 3,
                 MiniGameStates.X4Enter => 4,
                 MiniGameStates.X5Enter => 5,
-                MiniGameStates.X6Enter => 6,
+                //MiniGameStates.X6Enter => 6,
                 _ => diamondMultiplier
             };
 
-            if (state==MiniGameStates.X6Finish)
+            if (state==MiniGameStates.X5Finish)
             {
                 //win direcly
                 GameManager.Instance.Won();

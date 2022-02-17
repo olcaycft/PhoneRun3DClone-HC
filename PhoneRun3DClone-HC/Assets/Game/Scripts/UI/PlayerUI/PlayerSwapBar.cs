@@ -54,6 +54,7 @@ namespace Game.Scripts.UI.PlayerUI
             {
                 elapse += Time.deltaTime;
                 foregroundImage.fillAmount = Mathf.Lerp(preChangePct, pct, elapse / updateSpeedSeconds);
+                //foregroundImage.fillAmount = Mathf.InverseLerp(0f, pct, preChangePct);
                 yield return null;
             }
 
