@@ -64,9 +64,7 @@ namespace Game.Scripts.Managers
             }
             else if (currentPlayerStateIndex < 0 && isMiniGameStart)
             {
-                //Win that Game
                 GameManager.Instance.Won();
-                Debug.Log("you win that game here you at x " + MiniGameManager.Instance.GetDiamondMultiplier());
             }
             else if (currentPlayerStateIndex >= 0)
             {

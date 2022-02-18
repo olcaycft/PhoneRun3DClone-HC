@@ -48,6 +48,12 @@ namespace Game.Scripts.Managers
             levelFinishedObserver?.Invoke();
         }
 
+        public void WhenRewardComplete()
+        {
+            inGameDiamondCount *= 2;
+            UIManager.Instance.CollectedDiamondsInGame(inGameDiamondCount);
+            Debug.Log("Reward HAK ETTİ");
+        }
         
 
         
