@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Interactables
 {
@@ -27,6 +29,14 @@ namespace Game.Scripts.Interactables
             Move();
         }
 
+        protected override void OnTriggerEnter(Collider other)
+        {
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            base.DoAction();
+        }
 
         public override void Move()
         {

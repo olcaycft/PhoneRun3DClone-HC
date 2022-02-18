@@ -15,8 +15,13 @@ namespace Game.Scripts.Interactables
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                InteractableManager.Instance.SetInteractableValue(baseInteractableType);
+                DoAction();
             }
+        }
+
+        protected virtual void DoAction()
+        {
+            InteractableManager.Instance.SetInteractableValue(baseInteractableType);
         }
     }
     
