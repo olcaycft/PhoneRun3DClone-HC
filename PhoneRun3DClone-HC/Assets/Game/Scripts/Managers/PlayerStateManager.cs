@@ -15,7 +15,7 @@ namespace Game.Scripts.Managers
         private PlayerStates currentPlayerStates;
         private int playerSwapValue => SettingsManager.GameSettings.playerSwapValue;
         public static event Action<float> scoreChangedObserver;
-
+        public static event Action<int> playerStateChangedObserver; 
 
         [SerializeField] private bool isMiniGameStart;
 
@@ -65,6 +65,7 @@ namespace Game.Scripts.Managers
             }
             else if (currentPlayerStateIndex < 0 && isMiniGameStart)
             {
+                
                 GameManager.Instance.Won();
             }
             else if (currentPlayerStateIndex >= 0)
@@ -72,6 +73,9 @@ namespace Game.Scripts.Managers
                 ClearPlayerChangeScore();
                 ChangePlayer(currentPlayerStateIndex);
             }
+
+            if (!isMiniGameStart) return;
+            playerStateChangedObserver?.Invoke(currentPlayerStateIndex);
         }
 
         private void NextPlayer()
