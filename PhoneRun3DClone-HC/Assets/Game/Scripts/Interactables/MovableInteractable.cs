@@ -1,4 +1,5 @@
 using System;
+using Game.Scripts.Patterns;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,10 +8,11 @@ namespace Game.Scripts.Interactables
     public class MovableInteractable : InteractableBase
     {
         [SerializeField] private Transform sideMovementRoot;
-        [SerializeField] private Transform gateRightLimit;
-        [SerializeField] private Transform gateLeftLimit;
-        private float gateRightLimitX => gateRightLimit.localPosition.x;
-        private float gateLeftLimitX => gateLeftLimit.localPosition.x;
+        [SerializeField] private Transform movableRightLimit;
+        [SerializeField] private Transform movableLeftLimit;
+        private float movableRightLimitX => movableRightLimit.localPosition.x;
+        private float movableLeftLimitX => movableLeftLimit.localPosition.x;
+        private float randomDirectionPercentage => SettingsManager.GameSettings.fiftyPercentageLuckValue;
         private Vector3 startPoint;
 
         private Vector3 direction;
@@ -21,7 +23,7 @@ namespace Game.Scripts.Interactables
             pos.x = 0f;
             sideMovementRoot.position = pos;
             startPoint=sideMovementRoot.position;
-            direction = Random.value < 0.5f ? Vector3.left : Vector3.right;
+            direction = Random.value < randomDirectionPercentage ? Vector3.left : Vector3.right;
         }
 
         private void FixedUpdate()
@@ -42,7 +44,7 @@ namespace Game.Scripts.Interactables
         {
             var time = Time.time;
             var pingPong = Mathf.PingPong(time, 1f);
-            var minMax = Mathf.Lerp(gateLeftLimitX, gateRightLimitX, Mathf.SmoothStep(0.0f, 1f, pingPong));
+            var minMax = Mathf.Lerp(movableLeftLimitX, movableRightLimitX, Mathf.SmoothStep(0.0f, 1f, pingPong));
             var gateMove = minMax * direction;
             sideMovementRoot.position = startPoint + gateMove;
         }

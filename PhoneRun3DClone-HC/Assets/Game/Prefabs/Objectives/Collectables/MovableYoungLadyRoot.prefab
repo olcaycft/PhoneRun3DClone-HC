@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5645166602340561828}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5645166602340561835
 GameObject:
@@ -57,9 +57,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 5645166602617936640}
   - {fileID: 5645166603440311435}
   - {fileID: 5645166602339366514}
-  - {fileID: 5645166602617936640}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95,7 +95,7 @@ Transform:
   m_LocalScale: {x: 1, y: 2, z: 0.4}
   m_Children: []
   m_Father: {fileID: 5645166602340561828}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5645166602617936636
 MeshFilter:
@@ -171,10 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01fdba57ee354ec4690336d89e540235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseInteractableType: 6
+  baseInteractableType: 7
   sideMovementRoot: {fileID: 5645166602340561828}
-  gateRightLimit: {fileID: 5645166603440311435}
-  gateLeftLimit: {fileID: 5645166602339366514}
+  movableRightLimit: {fileID: 5645166603440311435}
+  movableLeftLimit: {fileID: 5645166602339366514}
 --- !u!1 &5645166603440311434
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,5 +203,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5645166602340561828}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

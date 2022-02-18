@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Game.Scripts.Managers;
+using Game.Scripts.Patterns;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -15,13 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private float playerRightLimitX => playerRightLimit.localPosition.x;
     private float playerLeftLimitX => playerLeftLimit.localPosition.x;
 
-    //private float sideMovementSensitivity => SettingsManager.GameSettings.playerSideMovementSensitivity;
-    //private float sideMovementLerpSpeed => SettingsManager.GameSettings.playerSideMovementLerpSpeed;
-    //private float forwardSpeed => SettingsManager.GameSettings.playerForwardSpeed;
+    private float sideMovementSensitivity => SettingsManager.GameSettings.playerSideMovementSensitivity;
+    private float sideMovementLerpSpeed => SettingsManager.GameSettings.playerSideMovementLerpSpeed;
+    private float forwardSpeed => SettingsManager.GameSettings.playerForwardSpeed;
 
-    private float sideMovementSensitivity = 1f;
-    private float sideMovementLerpSpeed = 5f;
-    private float forwardSpeed = 5f;
+    
 
     private float sideMovementTarget = 0f;
 

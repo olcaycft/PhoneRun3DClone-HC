@@ -11,6 +11,21 @@ namespace Game.Scripts.Managers
 
         public static event Action<float> interactableValueObserver;
 
+
+        private int diamondValue => SettingsManager.GameSettings.diamondValue;
+        private int miniCollectableValue => SettingsManager.GameSettings.miniCollectableValue;
+        private int middleCollectableValue => SettingsManager.GameSettings.middleCollectableValue;
+        private int bigCollectableValue => SettingsManager.GameSettings.bigCollectableValue;
+        private int youngLadyCollectableValue => SettingsManager.GameSettings.youngLadyCollectableValue;
+        private int miniObstacleValue => SettingsManager.GameSettings.miniObstacleValue;
+        private int middleObstacleValue => SettingsManager.GameSettings.middleObstacleValue;
+        private int hackerObstacleValue => SettingsManager.GameSettings.hackerObstacleValue;
+        private int oldLadyObstacleValue => SettingsManager.GameSettings.oldLadyObstacleValue;
+        private int goodGate50 => SettingsManager.GameSettings.goodGate50;
+        private int goodGate100 => SettingsManager.GameSettings.goodGate100;
+        private int badGate50 => SettingsManager.GameSettings.badGate50;
+        private int badGate100 => SettingsManager.GameSettings.badGate100;
+
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
@@ -20,17 +35,18 @@ namespace Game.Scripts.Managers
         {
             var interactableValue = state switch
             {
-                InteractableType.Collectable3 => 3,
-                InteractableType.Collectable10 => 10,
-                InteractableType.Collectable15 => 15,
-                InteractableType.Obstacle20 => -20,
-                InteractableType.Obstacle40 => -40,
-                InteractableType.ObstacleOldLady => -50,
-                InteractableType.CollectableYoungLady => 50,
-                InteractableType.GoodGate50 => 50,
-                InteractableType.GoodGate100 => 100,
-                InteractableType.BadGate50 => -50,
-                InteractableType.BadGate100 => -100,
+                InteractableType.MiniCollectable => miniCollectableValue,
+                InteractableType.MiddleCollectable => middleCollectableValue,
+                InteractableType.BigCollectable => bigCollectableValue,
+                InteractableType.MiniObstacle => miniObstacleValue,
+                InteractableType.MiddleObstacle => middleObstacleValue,
+                InteractableType.HackerObstacle => hackerObstacleValue,
+                InteractableType.ObstacleOldLady => oldLadyObstacleValue,
+                InteractableType.CollectableYoungLady => youngLadyCollectableValue,
+                InteractableType.GoodGate50 => goodGate50,
+                InteractableType.GoodGate100 => goodGate100,
+                InteractableType.BadGate50 => badGate50,
+                InteractableType.BadGate100 => badGate100,
                 _ => 0
             };
             interactableValueObserver?.Invoke(interactableValue);
@@ -38,18 +54,20 @@ namespace Game.Scripts.Managers
             switch (state)
             {
                 case InteractableType.Diamond:
-                    GameManager.Instance.ChangeInGameDiamondCount(1);
+                    GameManager.Instance.ChangeInGameDiamondCount(diamondValue);
                     break;
             }
         }
     }
+
     public enum InteractableType
     {
-        Collectable3,
-        Collectable10,
-        Collectable15,
-        Obstacle20,
-        Obstacle40,
+        MiniCollectable,
+        MiddleCollectable,
+        BigCollectable,
+        MiniObstacle,
+        MiddleObstacle,
+        HackerObstacle,
         ObstacleOldLady,
         CollectableYoungLady,
         Gate,

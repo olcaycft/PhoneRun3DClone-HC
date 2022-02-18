@@ -14,7 +14,7 @@ namespace Game.Scripts.UI.PlayerUI
         [SerializeField] private float updateSpeedSeconds = 0.2f;
         [SerializeField] private string add;
 
-        private int maxNumberForPlayerSwap = 100;
+        private int maxNumberForPlayerSwap =>SettingsManager.GameSettings.playerSwapValue;
         
         
 
