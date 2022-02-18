@@ -1,1 +1,9 @@
 # PhoneRun3DClone-HC
+
+developed with 2020.3.25f1 version of unity
+
+### English
+>In the game where we have 5 different main characters, we collect the objects on the ground and switch between each other. In order to pass, we must collect different green objects, pass through green gates and escape from different red objects. If the current character interacts with red objects and our current score falls below 0, the transition to the previous character is made. We lose the game if our score drops below 0 while we are in the character we started the game with. In the mini game part, starting with the current character we reached the end, we return to the previous character as we pass each room, and the number of diamond multipliers we collect increases. When we turn into the character we first started the game with, the existing diamonds we collect in the minigame are multiplied by the multiplier and added to the main diamond score. After level 3, levels begin to be produced procedural.
+
+### Turkish
+>5 farklı ana karakterimizin olduğu oyunda yerdeki objeleri toplayarak birbirleri arasında geçiş sağlıyoruz. Geçiş sağlayabilmek için birbirinden farklı yeşil objeleri toplamalı, yeşil gatelerden geçmeli ve birbirinden farklı kırmızı objelerden kaçmalıyız. Bir karakterde iken kırmızı objeler ile etkileşir ve mevcut puanımız 0 ın altına düşerse bir önceki karaktere geçiş yapılıyor. Oyuna başladığımız karakterdeyken puanımız 0 ın altına düşerde oyunu kaybediyoruz. Mini game kısmında ise sona ulaştığımız mevcut karakter ile başlayarak her odayı geçtikçe bir önceki karaktere dönüyoruz ve topladığımız elmas çarpan kat sayısı artıyor. En son oyuna ilk başladığımız karaktere dönüştüğümüz zaman minigame içerisinde topladığımız mevcut elmaslar bulunduğumuz çarpanla çarpılarak ana elmas skoruna ekleniyor. 3.levelden sonra level ler procedural olarak üretilmeye başlanıyor.
