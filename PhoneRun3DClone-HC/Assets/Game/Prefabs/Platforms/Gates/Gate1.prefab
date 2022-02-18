@@ -166,6 +166,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4710095460393013443}
     m_Modifications:
+    - target: {fileID: 2323080609095442814, guid: 4be922ba9b494a1458ac2d3e5f631659, type: 3}
+      propertyPath: leftGate
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323080609095442814, guid: 4be922ba9b494a1458ac2d3e5f631659, type: 3}
+      propertyPath: rightGate
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323080609095442814, guid: 4be922ba9b494a1458ac2d3e5f631659, type: 3}
+      propertyPath: baseInteractableType
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6128198994454710068, guid: 4be922ba9b494a1458ac2d3e5f631659, type: 3}
       propertyPath: m_Name
       value: Gate1-G50-B50

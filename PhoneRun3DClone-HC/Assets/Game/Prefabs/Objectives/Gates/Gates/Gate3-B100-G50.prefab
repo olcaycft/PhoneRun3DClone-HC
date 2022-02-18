@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa919f8785da4949b32617119bbe3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseInteractableType: 7
-  rightGate: 8
-  leftGate: 11
+  baseInteractableType: 8
+  rightGate: 9
+  leftGate: 12
 --- !u!1001 &8522767095634210706
 PrefabInstance:
   m_ObjectHideFlags: 0
